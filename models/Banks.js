@@ -13,6 +13,10 @@ const Banks = sequelize.define("Banks", {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    nemo: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     description: {
         type: DataTypes.STRING,
         allowNull: true
