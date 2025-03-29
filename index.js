@@ -1,10 +1,22 @@
-const sequelize = require('./database');
-const User = require('./models/User');
+const sequelize = require("./database");
+
+const Banks = require("./models/Banks");
+const Card = require("./models/Card");
+const Transaction = require("./models/Transaction");
+const User = require("./models/User");
 
 const express = require("express");
 
 const app = express();
 const port = 3001; // Puedes cambiar el puerto si lo necesitas
+
+
+// User relationships
+User.hasMany(Card, {foreignKey: "userId"});
+Card.belongsTo(User, {foreignKey: "userId"});
+
+Card.hasMany(Transaction, {foreignKey: "cardId"});
+Transaction.belongsTo(Card, {foreignKey: "cardId"});
 
 app.use(express.json()); // Permite leer JSON en las solicitudes
 
